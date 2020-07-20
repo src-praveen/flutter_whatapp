@@ -9,7 +9,7 @@ List<Chat> CHATS = [
           'https://cdn.iconscout.com/icon/free/png-256/friends-4-225967.png',
       contactNameOrGroupName: 'AVC Friends',
       isMuted: false,
-      lastAction: '+91 9585757200',
+      lastAction: '+91 9999999999',
       lastMessage: DateTime.now(),
       unReadMessage: 5),
   Chat(

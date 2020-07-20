@@ -3,71 +3,71 @@ import 'package:flutter_whatapp/dummy_data.dart';
 
 import 'widgets/common_widgets.dart';
 
-class Status extends StatelessWidget {
+class StatusScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              buildStatusRow(
+                  'https://img.icons8.com/pastel-glyph/2x/person-male.png',
+                  'My status',
+                  'Tap to add new status',
+                  true),
+              Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  buildStatusRow(
-                      'https://img.icons8.com/pastel-glyph/2x/person-male.png',
-                      'My status',
-                      'Tap to add new status',
-                      true),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20.0),
-                          alignment: Alignment.centerLeft,
-                          color: Colors.grey.shade300,
-                          height: 50.0,
-                          child: Text(
-                            'Recent updates',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black45),
-                          ),
-                        ),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      alignment: Alignment.centerLeft,
+                      color: Colors.grey.shade300,
+                      height: 50.0,
+                      child: Text(
+                        'Recent updates',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black45),
                       ),
-                    ],
+                    ),
                   ),
-                  ..._statusRowBuilder(),
                 ],
               ),
-            ),
-          ],
+              ..._statusRowBuilder(),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            mini: true,
-            backgroundColor: Colors.grey[200],
-            onPressed: () {},
-            child: Icon(
-              Icons.edit,
-              color: Colors.black54,
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                FloatingActionButton(
+                  mini: true,
+                  backgroundColor: Colors.grey[200],
+                  onPressed: () {},
+                  child: Icon(
+                    Icons.edit,
+                    color: Colors.black54,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                FloatingActionButton(
+                  backgroundColor: Color(0xff00cc3f),
+                  onPressed: () {},
+                  child: Icon(Icons.photo_camera),
+                ),
+              ],
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          FloatingActionButton(
-            backgroundColor: Color(0xff00cc3f),
-            onPressed: () {},
-            child: Icon(Icons.photo_camera),
-          ),
-        ],
-      ),
+        )
+      ],
     );
   }
 
